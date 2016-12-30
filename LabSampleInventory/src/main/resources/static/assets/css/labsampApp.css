@@ -1,0 +1,210 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+#main {
+	flex: 1;
+	overflow-y: auto;
+}
+
+.page-container {
+	padding-top: 20px;
+}
+
+.page-footer {
+	height: 60px;
+	background-color: #e7e7e7;
+}
+
+.footer-content .caption {
+	font-size: 20px;
+	font-family: cursive;
+	color: rgb(180, 63, 205);
+	padding-top: 15px;
+}
+
+.page-header .actions .btn {
+	margin-top: 10px;
+	font-size: 17px;
+	font-family: monospace;
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+span.dropt {border-bottom: thin dotted; background: #ffeedd;}
+span.dropt:hover {text-decoration: none; background: #ffffff; z-index: 6; }
+span.dropt span {position: absolute; left: -9999px;
+  margin: 20px 0 0 0px; padding: 3px 3px 3px 3px;
+  border-style:solid; border-color:black; border-width:1px; z-index: 6;}
+span.dropt:hover span {left: 2%; background: #ffffff;} 
+span.dropt span {position: absolute; left: -9999px;
+  margin: 4px 0 0 0px; padding: 3px 3px 3px 3px; 
+  border-style:solid; border-color:black; border-width:1px;}
+span.dropt:hover span {margin: 20px 0 0 170px; background: #ffffff; z-index:6;} 
+
+#labsamp-list {
+	margin-bottom: 65px;
+}
+
+.labsampForm .create-labsamp {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	outline: none;
+	font-size: 18px;
+	color: rgb(32, 120, 207);
+	width: 50px;
+}
+
+.date-label {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	outline: none;
+	font-size: 18px;
+	color: rgb(32, 120, 207);
+	vertical-align: bottom;
+}
+
+input[type="checkbox"] {
+	width: 15px;
+	height: 15px;
+}
+
+.labsamp-item {
+	color: #31708f;
+	background-color: #fefefe;
+	border-color: #bce8f1;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 16px;
+	font-size: 20px;
+	border: 1px solid transparent;
+	border-bottom: 1px solid #AAC0CB;
+}
+
+.container .jumbotron {
+	padding: 10px;
+	border-radius: 0;
+	background-kcolor: #e6e6ff;
+}
+
+.container .jumbotron h2 {
+	font-size: 24px;
+	margin-top: 10px;
+}
+
+.btn {
+	border-radius: 0;
+}
+
+.form-control {
+	height: 44px;
+	border-radius: 0;
+}
+
+.form-control:focus {
+	box-shadow: none;
+}
+
+.input-group-addon {	
+	color: #286000;
+	border-radius: 0;
+	vertical-align: bottom;
+}
+
+.labsamp-content .form-control {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 16px;
+	font-size: 18px;
+	height: 45px;
+	box-shadow: none;
+}
+
+.labsamp-content .form-control:focus {
+	box-shadow: none;
+}
+
+.labsamp-content .btn-lg {
+	width: 200px;
+}
+
+.edit {
+	display: none;
+}
+
+.edit .glyphicon-ok-circle {
+	font-size: 20px;
+	cursor: pointer;
+	border: none;
+	background: transparent;
+	outline: none;
+	color: rgb(65, 174, 55);
+}
+
+.editing .view {
+	display: none;
+}
+
+.editing .edit {
+	display: inline-table;
+}
+
+.page-header {
+	margin: 0;
+	background: #006699;
+}
+
+.page-header .logo {
+	margin-top: 10px;
+	font-family: Verdana;
+	color: #fff;
+	font-size: 20px;
+	margin-bottom: 8px;
+}
+
+.labsamp-item .completed {
+	font-weight: 300;
+	color: rgb(180, 164, 164);
+}
+
+.error-container {
+	color: #ff80c0;
+	text-align: left;
+	margin-top: 5px;
+}
+
+.error-container .error {
+	display: block;
+}
+
+.ng-invalid.ng-dirty {
+	border-color: #ff8080;
+}
+
+.ng-valid.ng-dirty {
+	border-color: #80ff80;
+}
+.vert-spacer {
+	margin-top: 5 px;
+}
+
+#edit-grp-left {
+float: left;
+width:30%;
+font-size: 17px;
+}
+
+#edit-grp-right {
+float: left;
+width: 60%;
+}
+
+#edit-grp-add_col {
+float: left;
+width: 10%;
+}

@@ -1,0 +1,338 @@
+<div class="page-container" ng-controller="LabsampController">
+
+	<div class="container">
+		<div class="labsamp-content">
+			<div class="container" style="background-color: #e6f2ff;">
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3">
+						<div class="jumbotron text-center row">
+							<h3>
+								Number of samples in inventory: <span class="label label-info">{{
+									labsamps.length }}</span>
+							</h3>
+						</div>
+					</div>
+				</div>
+				<!-- FORM TO CREATE TODOS -->
+				<div id="labsamp-form" class="row" ng-model-options="{ allowInvalid: true}">
+					<div class="col-sm-6 col-sm-offset-3 text-center"
+						style="padding: 0;">
+						<form name="labsampForm" class="labsampForm" ng-submit="createLabsamp()" novalidate>
+							<div class="form-group">
+								<!-- formData.sampdescription -->
+								<div class="input-group">
+									<div class="row">
+										<div class="col-md-12">
+											<input id="sampdescription" name="sampdescription" type="text" class="form-control input-text"
+												placeholder="Enter Description/Notes about your sample"
+												ng-model="formData.sampdescription" autofocus required/>
+										</div>													 		
+										 <div ng-show="labsampForm.$dirty && labsampForm.sampdescription.$invalid">
+										     <span style='color:red;text-align:left' ng-show='labsampForm.sampdescription.$error.required'>
+										     	Enter required field
+										     </span>
+										 </div>
+										
+									</div>
+									<!--
+									<div class="container">
+									  -->
+									<div class="row">
+										<div class="col-md-6">
+											<br />
+											<p>
+												<label for="checkindate" class="date-label">Checked
+													In</label> 
+													<input type="date" class="form-control input-date" id="checkindate"
+													 value="{{formData.checkinDate | date: 'yyyy-MM-dd'}}" placeholder="Check-in Date"
+													ng-model="formData.checkinDate" />
+
+											</p>
+										</div>
+										<div class="col-md-6">
+											<br />
+											<p>
+												<label for="checkinPerson" class="date-label">&nbsp;</label>
+												<input type="text" class="form-control input-text"
+													placeholder="Check-in Person"
+													ng-model="formData.checkinPerson" />
+											</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<p>
+												<!-- <label>Sample Name</label> <input ng-model="formData.sampleName"
+											ng-class="{'has-error': MemberForm.sampleName.$invalidmember }" /> -->
+
+												<input type="text" class="form-control input-text"
+													placeholder="Sample name" ng-model="formData.sampleName" />
+
+											</p>
+										</div>
+										<div class="col-md-6">
+											<p>
+												<input type="text" class="form-control input-text"
+													placeholder="Customer name"
+													ng-model="formData.customerName"">
+											</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<p>
+												<input type="text" class="form-control input-text"
+													placeholder="Workflow name"
+													ng-model="formData.workflowName"">
+
+											</p>
+										</div>
+										<div class="col-md-6">
+											<p>
+												<input type="text" class="form-control input-text"
+													placeholder="Barcode" ng-model="formData.barcode"">
+
+											</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<p>
+												<input type="text" class="form-control input-text"
+													placeholder="Test Status" ng-model="formData.testStatus">
+
+											</p>
+										</div>
+										<div class="col-md-6">
+											<p>
+												<input type="text" class="form-control input-text"
+													placeholder="Status" ng-model="formData.status">
+
+											</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<p>
+												<input type="text" class="form-control input-text"
+													placeholder="Instance Name"
+													ng-model="formData.instanceName" />
+
+											</p>
+										</div>
+										<div class="col-md-6">
+											<p>
+												<input type="text" class="form-control input-text"
+													placeholder="Batch Id" ng-model="formData.batchId">
+											</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<p>
+												<input type="text" class="form-control input-text"
+													placeholder="Project Name" ng-model="formData.project"">
+
+											</p>
+										</div>
+										<div class="col-md-6"></div>
+									</div>
+									<br />
+									<div class="row">
+										<div class="col-md-6">
+											<p>
+												<label class="date-label">Test Start</label> 
+												<input type="date" class="form-control input-date" id="startdate"
+													value="{{formData.startDate | date: 'yyyy-MM-dd'}}" 
+													placeholder="Test Start Date" ng-model="formData.startDate">
+
+											</p>
+										</div>
+										<div class="col-md-6">
+											<p>
+												<label class="date-label">Test Finish</label>
+												 <input	type="date" class="form-control input-date" id="finishdate"
+													value="{{formData.finishDate | date: 'yyyy-MM-dd'}}" 													
+													placeholder="Test End Date" ng-model="formData.finishDate">
+
+											</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<p>
+												<input type="text" class="form-control input-text"
+													placeholder="Test Results" ng-model="formData.results">
+											</p>
+										</div>
+										<div class="col-md-6">
+											<input type="text" class="form-control input-text"
+													id="shelfName" name="shelfName" placeholder="Shelf Id" ng-model="formData.shelfName"
+													required ng-pattern="shelfNameFormat"/>	
+													 		
+											 <div ng-show="labsampForm.$dirty && labsampForm.shelfName.$invalid">
+											     <span style="color:red;text-align:left"  ng-show='labsampForm.shelfName.$error.required'>Enter required field
+											     </span>
+											 </div>
+											 							
+											 <div ng-show='labsampForm.$dirty && labsampForm.shelfName.$error.pattern'>
+											     <span style="color:red;text-align:left" ng-show='labsampForm.shelfName.$error.pattern'>Enter required format: sh-[alphanumeric chars]-[numerals]
+											     </span>
+											  </div>
+											 <!-- <tt>labsampForm.sampdescription.$valid = {{labsampForm.sampdescription.$valid}}</tt><br/>
+											 <tt>labsampForm.shelfName.$valid = {{labsampForm.shelfName.$valid}}</tt><br/>
+											  <tt>labsampForm.shelfName.$error = {{labsampForm.shelfName.$error}}</tt><br/>
+											  <tt>labsampForm.$valid = {{labsampForm.$valid}}</tt><br/>
+											  <tt>labsampForm.$error.required = {{!!labsampForm.$error.required}}</tt><br/>
+											  <tt>labsampForm.$error.pattern = {{!!labsampForm.$error.pattern}}</tt><br/>  -->
+										</div>
+									</div>
+									<br />
+								<!-- createToDo() WILL CREATE NEW TODOS -->	
+									<div class="col-md-5">
+									</div>
+									<div class="col-md-4">
+										<div class="input-group-addon">
+											<button type="submit" class="create-labsamp">Add</button>
+										</div>
+									</div>
+							</div>
+						</div>
+					</div>
+					</form>
+				</div>
+				</div>
+				<!-- TODO LIST -->
+				<div id="labsamp-list" class="row" ng-show="labsamps.length > 0">
+					<div class="col-sm-6 col-sm-offset-3"
+						style="border: 1px solid #e8e8e8;">
+						<!-- TODOS loop in $scope.labsamps -->
+						<div class="labsamp-item row" ng-repeat="labsamp in labsamps"
+							ng-class="{'editing': labsamp == editedLabsamp}">
+							<div class="view row">
+								<label class="col-sm-10" ng-class="{'completed': labsamp.completed}">
+									<input type="checkbox" ng-click="saveLabsamp(labsamp)"
+									ng-model="labsamp.completed"> {{ labsamp.sampdescription }}
+								</label>
+								<div class="col-sm-2">
+									<span class="glyphicon glyphicon-pencil"
+										style="cursor: pointer; color: rgb(80, 228, 80);"
+										ng-click="editLabsamp(labsamp)"> </span> &nbsp; <span
+										class="glyphicon glyphicon-remove-circle"
+										ng-click="deleteLabsamp(labsamp.id)"
+										style="cursor: pointer; color: red;"> </span>
+								</div>
+							</div>
+								<form style="margin-bottom: 2px; margin-right: 10px;" ng-submit="saveLabsamp(editedLabsamp)">
+									<div class="input-group edit">
+										<div id="edit-grp-left">Description/Notes:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.sampdescription" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Checked in:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" type="date" class="form-control input-date"										
+												value="{{editedLabsamp.checkinDate | date: 'yyyy-MM-dd'}}" style="color: gray;"
+												ng-model="editedLabsamp.checkinDate" labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Person (checked in):&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.checkinPerson" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Sample Name:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.sampleName" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Customer:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.customerName" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Workflow Name:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.workflowName" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Barcode:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.barcode" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Test Status:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.testStatus" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Status:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.status" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Instance Name:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.instanceName" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Batch Id:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.batchId" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Project:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.project" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Test Start:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" type="date" class="form-control input-date"									
+												value="{{editedLabsamp.startDate | date: 'yyyy-MM-dd'}}" style="color: gray;"
+												ng-model="editedLabsamp.startDate" labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Test Finished:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" type="date" class="form-control input-date"											
+												value="{{editedLabsamp.finishDate | date: 'yyyy-MM-dd'}}" style="color: gray;"
+												ng-model="editedLabsamp.finishDate" labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Results:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.results" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div id="edit-grp-left">Shelf Name:&nbsp;</div>
+										<div id="edit-grp-right">
+											<input name="editInput" class="form-control"
+												ng-model="editedLabsamp.shelfName" style="color: gray;"
+												labsamp-focus="labsamp == editedLabsamp">
+										</div>
+										<div class="input-group-addon" id="edit-grp-add_col"
+											style="background-color: #fff;">
+											<span class="dropt" sampdescription="Save Edits">
+												<button class="glyphicon glyphicon-ok-circle"></button>
+											</span>
+										</div>
+									</div>
+								</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
