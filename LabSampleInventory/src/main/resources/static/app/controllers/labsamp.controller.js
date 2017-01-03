@@ -1,7 +1,7 @@
 angular.module('labsampApp')
 .controller('LabsampController', ['$scope', '$filter', 'Labsamps',  function LabsampController($scope, $filter, Labsamps) {
 	$scope.formData = {};
-	$scope.shelfNameFormat = /sh+\-[a-zA-Z0-9-]+\-[0-9]/;  
+	$scope.shelfNameFormat = /sh+\-[a-zA-Z0-9]+\-[0-9]/;  
 	
     Labsamps.get()
     .success(function(data) {
